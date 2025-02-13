@@ -1,4 +1,4 @@
-import { Heart, Gift, MessageCircleHeart, Cake } from "lucide-react";
+import { MessageCircleHeart } from "lucide-react";
 
 export const cardData = [
   {

@@ -1,24 +1,33 @@
-"use client"
+"use client";
 
-import { useCallback } from "react"
-import Particles from "react-tsparticles"
-import { loadSlim } from "tsparticles-slim"
-import type { Engine, ISourceOptions } from "tsparticles-engine"
+import { useCallback } from "react";
+import Particles from "react-tsparticles";
+import type { Engine, ISourceOptions } from "tsparticles-engine";
+import { loadSlim } from "tsparticles-slim";
 
 interface ParticleEffectProps {
-  type: "confetti" | "hearts"
+  type: "confetti" | "hearts";
 }
 
 export default function ParticleEffect({ type }: ParticleEffectProps) {
   const particlesInit = useCallback(async (engine: Engine) => {
-    await loadSlim(engine)
-  }, [])
+    await loadSlim(engine);
+  }, []);
 
   const options: ISourceOptions =
     type === "confetti"
       ? {
           particles: {
-            color: { value: ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff", "#00ffff"] },
+            color: {
+              value: [
+                "#ff0000",
+                "#00ff00",
+                "#0000ff",
+                "#ffff00",
+                "#ff00ff",
+                "#00ffff",
+              ],
+            },
             move: {
               direction: "bottom",
               enable: true,
@@ -78,8 +87,13 @@ export default function ParticleEffect({ type }: ParticleEffectProps) {
               y: 50,
             },
           },
-        }
+        };
 
-  return <Particles id={`tsparticles-${type}`} init={particlesInit} options={options} />
+  return (
+    <Particles
+      id={`tsparticles-${type}`}
+      init={particlesInit}
+      options={options}
+    />
+  );
 }
-

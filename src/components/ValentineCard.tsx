@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import Image from "next/image"
-import type { LucideIcon } from "lucide-react"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import type { LucideIcon } from "lucide-react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 interface ValentineCardProps {
-  title: string
-  description: string
-  image: string
-  icon?: LucideIcon
-  isSpecialCard?: boolean
-  options?: string[]
-  onCorrectAnswer?: () => void
+  title: string;
+  description: string;
+  image: string;
+  icon?: LucideIcon;
+  isSpecialCard?: boolean;
+  options?: string[];
+  onCorrectAnswer?: () => void;
 }
 
 export default function ValentineCard({
@@ -25,21 +25,21 @@ export default function ValentineCard({
   options,
   onCorrectAnswer,
 }: ValentineCardProps) {
-  const [selectedOption, setSelectedOption] = useState<number | null>(null)
-  const [correctOption, setCorrectOption] = useState<number | null>(null)
+  const [selectedOption, setSelectedOption] = useState<number | null>(null);
+  const [correctOption, setCorrectOption] = useState<number | null>(null);
 
   useEffect(() => {
     if (options) {
-      setCorrectOption(Math.floor(Math.random() * options.length))
+      setCorrectOption(Math.floor(Math.random() * options.length));
     }
-  }, [options])
+  }, [options]);
 
   const handleOptionClick = (index: number) => {
-    setSelectedOption(index)
+    setSelectedOption(index);
     if (index === correctOption && onCorrectAnswer) {
-      onCorrectAnswer()
+      onCorrectAnswer();
     }
-  }
+  };
 
   return (
     <Card
@@ -51,20 +51,28 @@ export default function ValentineCard({
         <CardTitle
           className={`text-2xl font-bold ${isSpecialCard ? "text-blue-700" : "text-pink-700"} flex items-center`}
         >
-          {Icon && <Icon className={`w-6 h-6 mr-2 ${isSpecialCard ? "text-pink-600" : "text-blue-600"}`} />}
+          {Icon && (
+            <Icon
+              className={`w-6 h-6 mr-2 ${isSpecialCard ? "text-pink-600" : "text-blue-600"}`}
+            />
+          )}
           {title}
         </CardTitle>
       </CardHeader>
       <CardContent className="p-4">
         <div className="relative w-full h-48 mb-4">
-          <Image 
-            src={image || "/placeholder.svg"} 
-            alt={title} 
-            fill 
-            className="object-cover rounded-md" 
+          <Image
+            src={image || "/placeholder.svg"}
+            alt={title}
+            fill
+            className="object-cover rounded-md"
           />
         </div>
-        <p className={`${isSpecialCard ? "text-blue-600" : "text-pink-600"} mb-4`}>{description}</p>
+        <p
+          className={`${isSpecialCard ? "text-blue-600" : "text-pink-600"} mb-4`}
+        >
+          {description}
+        </p>
         {options && (
           <div className="flex flex-col space-y-2">
             {options.map((option, index) => (
@@ -86,6 +94,5 @@ export default function ValentineCard({
         )}
       </CardContent>
     </Card>
-  )
+  );
 }
-

@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence, type PanInfo } from "framer-motion";
-import { cardData } from "@/constants/cardData";
-import ValentineCard from "@/components/ValentineCard";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import ParticleEffect from "@/components/ParticleEffect";
+import ValentineCard from "@/components/ValentineCard";
+import { cardData } from "@/constants/cardData";
+import { AnimatePresence, motion, type PanInfo } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const SWIPE_THRESHOLD = 100; // Minimum distance to trigger a swipe
 
@@ -25,7 +25,7 @@ export default function CardStack() {
 
   const handleDragEnd = (
     event: MouseEvent | TouchEvent | PointerEvent,
-    info: PanInfo
+    info: PanInfo,
   ) => {
     if (quizCompleted && info.offset.x > SWIPE_THRESHOLD && currentIndex > 0) {
       handleSwipe(-1);
