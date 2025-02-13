@@ -10,7 +10,7 @@ interface ValentineCardProps {
   title: string
   description: string
   image: string
-  icon: LucideIcon
+  icon?: LucideIcon
   isSpecialCard?: boolean
   options?: string[]
   onCorrectAnswer?: () => void
@@ -51,7 +51,7 @@ export default function ValentineCard({
         <CardTitle
           className={`text-2xl font-bold ${isSpecialCard ? "text-blue-700" : "text-pink-700"} flex items-center`}
         >
-          <Icon className={`w-6 h-6 mr-2 ${isSpecialCard ? "text-pink-600" : "text-blue-600"}`} />
+          {Icon && <Icon className={`w-6 h-6 mr-2 ${isSpecialCard ? "text-pink-600" : "text-blue-600"}`} />}
           {title}
         </CardTitle>
       </CardHeader>
