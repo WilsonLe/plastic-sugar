@@ -43,17 +43,27 @@ export default function ValentineCard({
 
   return (
     <Card
-      className={`w-full h-full overflow-y-auto hide-scrollbar shadow-lg bg-white/95 border-pink-200 backdrop-blur-sm select-none ${isSpecialCard ? "border-4 border-pink-400" : ""}`}
+      className={`w-full h-full overflow-y-auto hide-scrollbar shadow-lg bg-white/95 border-pink-200 backdrop-blur-sm select-none ${
+        isSpecialCard ? "border-4 border-pink-400" : ""
+      }`}
     >
       <CardHeader
-        className={`p-4 ${isSpecialCard ? "bg-gradient-to-r from-pink-300 to-blue-300" : "bg-gradient-to-r from-blue-200 to-pink-200"}`}
+        className={`p-4 ${
+          isSpecialCard
+            ? "bg-gradient-to-r from-pink-300 to-blue-300"
+            : "bg-gradient-to-r from-blue-200 to-pink-200"
+        }`}
       >
         <CardTitle
-          className={`text-2xl font-bold ${isSpecialCard ? "text-blue-700" : "text-pink-700"} flex items-center`}
+          className={`text-2xl font-bold ${
+            isSpecialCard ? "text-blue-700" : "text-pink-700"
+          } flex items-center`}
         >
           {Icon && (
             <Icon
-              className={`w-6 h-6 mr-2 ${isSpecialCard ? "text-pink-600" : "text-blue-600"}`}
+              className={`w-6 h-6 mr-2 ${
+                isSpecialCard ? "text-pink-600" : "text-blue-600"
+              }`}
             />
           )}
           {title}
@@ -65,11 +75,14 @@ export default function ValentineCard({
             src={image || "/placeholder.svg"}
             alt={title}
             fill
+            draggable={false}
             className="object-cover rounded-md"
           />
         </div>
         <p
-          className={`${isSpecialCard ? "text-blue-600" : "text-pink-600"} mb-4`}
+          className={`${
+            isSpecialCard ? "text-blue-600" : "text-pink-600"
+          } mb-4`}
         >
           {description}
         </p>
